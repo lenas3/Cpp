@@ -2,19 +2,6 @@
 
 Contact::Contact()
 {
-    
-}
-
-void Contact::inputInfos(void)
-{
-    std::cout << "Name? :  ";
-    std::cin  >> _name;
-    std::cout << std::endl << "Last Name? :  ";
-    std::cin  >> _lastName;
-    std::cout << std::endl << "Phone Number? :  ";
-    std::cin  >> _phoneNum;
-    std::cout << std::endl << "Area Code? :  ";
-    std::cin  >> _areaCode;
 }
 
 std::string Contact::getName(void) const
@@ -29,7 +16,32 @@ std::string Contact::getPhoneNum(void)  const
 {
     return _phoneNum;
 }
-std::string Contact::getAreaCode(void) const
+std::string Contact::getNickName(void)  const
 {
-    return _areaCode;
+    return _nickName;
+}
+std::string Contact::getDarkestSecret(void) const
+{
+    return _darkestSecret;
+}
+
+void Contact::setName(std::string input)
+{
+    _name = input;
+}
+void Contact::setLastName(std::string input)
+{
+    _lastName = input;
+}
+void Contact::setPhoneNum(std::string input) 
+{
+    _phoneNum = input;
+}
+void Contact::setNickname(std::string input)
+{
+    _nickName = input;
+}
+void Contact::setDarkestSecret(std::string input)
+{
+    _darkestSecret = input;
 }

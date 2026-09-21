@@ -18,6 +18,7 @@ class Contact {
         std::string getNickName(void) const;
         std::string getDarkestSecret(void) const;
         int nbContacts;
+        Contact(void);
 
     private:
         std::string _name;

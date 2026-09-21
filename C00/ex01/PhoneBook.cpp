@@ -20,24 +20,31 @@ void PhoneBook::displayAdd(void)
     
     std::cout << "You're about to add a new contact to the phonebook." << std::endl;
     std::cout << "Little Warning, you can't leave your infos empty." << std::endl;
-    while(name.empty()) {
+    while(name.empty() || name == " " || name == "\t" || name == "\n") {
         std::cout << "Please enter your name: " << std::endl;
-        getline(std::cin, name, '\n'); }
-    while(lastName.empty() ) {
+        getline(std::cin, name, '\n'); 
+        if(std::cin.eof()) return ;
+    }
+    while(lastName.empty() || lastName == " " || lastName == "\t" || lastName == "\n" ) {
         std::cout << "Please enter your last name: " << std::endl;
-        getline(std::cin, lastName, '\n');
+        getline(std::cin, lastName, '\n'); 
+        if(std::cin.eof()) return ;
     }
-    while(nick.empty() ) {
+    while(nick.empty()  || nick == " " || nick == "\t" || nick == "\n") {
         std::cout << "Please enter your nickname: " << std::endl;
-        getline(std::cin, nick, '\n');
+        getline(std::cin, nick, '\n'); 
+        if(std::cin.eof()) return ;
     }
-    while(phoneNum.empty() ) {
+    while(phoneNum.empty() || phoneNum == " " || phoneNum == "\t" || phoneNum == "\n" ) {
         std::cout << "Please enter your phone number: " << std::endl;
         getline(std::cin, phoneNum, '\n');
+        if(std::cin.eof()) return ;
     }
-    while(secret.empty() ) {
+    while(secret.empty() || secret == " " || secret == "\t" || secret == "\n" ) {
         std::cout << "Give us your darkest secret: " << std::endl;
         getline(std::cin, secret, '\n');
+        if(std::cin.eof()) return ;
+
     }   
     _contacts[_index].setName(name);
     _contacts[_index].setLastName(lastName);
@@ -87,14 +94,22 @@ void PhoneBook::displayContacts(void)
 
 void PhoneBook::displaySearch(void)
 {
-
-
+    int i = 0;
+    displayContacts();
+    while(i < 0 || i > _nbContacts)
+    {
+        std::cout << "Invalid index!" << std::endl << "Enter an index: " << std::endl;
+        std::cin >> i;
+    }
+    std::cout << "Enter an index: " << std::endl;
+    std::cin >> i;
+    std::cout << std::setw(10) << i << "|" << std::setw(10) << _contacts[i].getName() << "|" << std::setw(10) << _contacts[i].getLastName();
+    std::cout  << "|" << std::setw(10) << _contacts[i].getNickName() << "|" << std::setw(10) << _contacts[i].getPhoneNum() << "|" << std::setw(10) << _contacts[i].getDarkestSecret() << std::endl;
 }
 void PhoneBook::displayExit(void)
 {
 
 }
-
 
 int main()
 {
@@ -103,18 +118,19 @@ int main()
 
     std::cout << "Welcome! Select one of these: ADD, SEARCH or EXIT?" << std::endl;
     std::cin >> input;
-    while(input == "ADD" || input == "SEARCH" || input == "EXIT")
+    while(input != "ADD" && input != "SEARCH" && input != "EXIT")
     {
-        if(input == "ADD")
-            ptr.displayAdd();
-        if(input == "SEARCH")
-            ptr.displaySearch();
-        if(input == "EXIT")
-            ptr.displayExit();
-        std::cout << "Select one of these: ADD, SEARCH or EXIT?" << std::endl;
+        std::cout << "Invalid input! Select one of these: ADD, SEARCH or EXIT?" << std::endl;
         std::cin >> input;
     }
+    if(input == "ADD")
+        ptr.displayAdd();
+    if(input == "SEARCH")
+        ptr.displaySearch();
+    if(input == "EXIT")
+        ptr.displayExit();
 }
+
 PhoneBook::~PhoneBook()
 {
     //destructor

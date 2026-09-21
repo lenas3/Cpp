@@ -62,7 +62,7 @@ std::string PhoneBook::fixLength(std::string word)
     return (dup);
 }
 
-void PhoneBook::displayColumns(void)
+void PhoneBook::displayContacts(void)
 {
     int i = 0;
     std::string name;
@@ -86,26 +86,36 @@ void PhoneBook::displayColumns(void)
 }
 
 void PhoneBook::displaySearch(void)
-{}
+{
+
+
+}
 void PhoneBook::displayExit(void)
-{}
+{
+
+}
 
 
 int main()
 {
-    std::string input;  
+    std::string input;
+    PhoneBook ptr;
 
     std::cout << "Welcome! Select one of these: ADD, SEARCH or EXIT?" << std::endl;
     std::cin >> input;
     while(input == "ADD" || input == "SEARCH" || input == "EXIT")
     {
         if(input == "ADD")
-            displayAdd();
+            ptr.displayAdd();
         if(input == "SEARCH")
-            displaySearch();
+            ptr.displaySearch();
         if(input == "EXIT")
-            displayExit();
+            ptr.displayExit();
         std::cout << "Select one of these: ADD, SEARCH or EXIT?" << std::endl;
         std::cin >> input;
     }
+}
+PhoneBook::~PhoneBook()
+{
+    //destructor
 }

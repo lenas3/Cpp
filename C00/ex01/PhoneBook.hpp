@@ -19,7 +19,7 @@ class PhoneBook
 
     private:
         Contact _contacts[8];
-        void displayColumns(void);
+        void displayContacts(void);
         std::string fixLength(std::string word);
         int _nbContacts;
         int _index;

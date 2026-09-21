@@ -10,6 +10,11 @@ int PhoneBook::getNbContacts(void) const
     return _nbContacts;
 }
 
+// TODO: asagida tekrar eden yapiya ayri fonksiyon düsün
+// FIX: name == " " dedigim icin birden fazla boslugu kabul ediyo, tüm girdiyi dolasip kontrol etmem lazim
+// FIX: add girildiğinde iki kez "enter your name" basıyo
+// FIX: kişi bilgilerini aldıktan sonra programdan çıkıyo
+
 void PhoneBook::displayAdd(void)
 {
     std::string name;
@@ -69,6 +74,9 @@ std::string PhoneBook::fixLength(std::string word)
     return (dup);
 }
 
+// FIX: phonebook boşken index seçtiriyorum mecburen olmayan/bos bi index basıyo ama hata vermiyo
+// FIX: bos kalan contact bilgisi hata vermiyo
+// FIX: index için digit olmayan bi deger girince hata vermiyo
 void PhoneBook::displayContacts(void)
 {
     int i = 0;
@@ -106,6 +114,19 @@ void PhoneBook::displaySearch(void)
     std::cout << std::setw(10) << i << "|" << std::setw(10) << _contacts[i].getName() << "|" << std::setw(10) << _contacts[i].getLastName();
     std::cout  << "|" << std::setw(10) << _contacts[i].getNickName() << "|" << std::setw(10) << _contacts[i].getPhoneNum() << "|" << std::setw(10) << _contacts[i].getDarkestSecret() << std::endl;
 }
+
+/*
+FIX: 
+Welcome! Select one of these: ADD, SEARCH or EXIT?
+SEARCH
+--- Saved Contacts ---
+Enter an index: 
+8
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+zsh: IOT instruction (core dumped)  ./a.out
+
+*/
 void PhoneBook::displayExit(void)
 {
 

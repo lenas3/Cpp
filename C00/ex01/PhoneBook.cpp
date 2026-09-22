@@ -104,6 +104,17 @@ void PhoneBook::displayContacts(void)
     }
 }
 
+/*
+Welcome! Select one of these: ADD, SEARCH or EXIT?
+
+ADD
+You're about to add a new contact to the phonebook.
+Please enter your name: 
+Please enter your name:
+
+-> SEARCH secip tekrar ADD secince tekrar iki kez printledi
+*/
+
 void PhoneBook::displaySearch(void)
 {
     int i = 0;

@@ -12,8 +12,6 @@ int PhoneBook::getNbContacts(void) const
 
 // TODO: asagida tekrar eden yapiya ayri fonksiyon düsün
 // FIX: name == " " dedigim icin birden fazla boslugu kabul ediyo, tüm girdiyi dolasip kontrol etmem lazim
-// FIX: add girildiğinde iki kez "enter your name" basıyo
-// FIX: kişi bilgilerini aldıktan sonra programdan çıkıyo
 
 void PhoneBook::displayAdd(void)
 {
@@ -146,12 +144,12 @@ int main()
     PhoneBook ptr;
 
     std::cout << "Welcome! Select one of these: ADD, SEARCH or EXIT?" << std::endl;
-    std::cin >> input;
+    getline(std::cin, input, '\n');
     if(std::cin.eof())  return 1;
     while(input != "ADD" && input != "SEARCH" && input != "EXIT")
     {
         std::cout << "Invalid input! Select one of these: ADD, SEARCH or EXIT?" << std::endl;
-        std::cin >> input;
+        getline(std::cin, input, '\n');
         if(std::cin.eof())  return 1;
     }
     while(input == "ADD" || input == "SEARCH" || input == "EXIT")
